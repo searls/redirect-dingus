@@ -13,7 +13,7 @@ So here's how to use this repo:
 3. Add the [nginx buildpack](https://github.com/heroku/heroku-buildpack-nginx) with something like `heroku buildpacks:add --app your-app-name heroku-community/nginx`
 4. Configure redirect domains (see [below](#configuring-your-redirect-domains))
 5. Set up HTTPS by [enabling Heroku automated certificate management](https://devcenter.heroku.com/articles/automated-certificate-management)
-6. Define domains (see below)
+6. Define domains (see [below](#configure-custom-domains))
 
 ## Configuring your redirect domains
 
