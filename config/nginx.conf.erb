@@ -34,7 +34,7 @@ http {
 	sendfile on;
 
 	map $host $target_host {
-		<% require('json'); JSON.parse(ENV["REDIRECT_DOMAIN_MAP"] || {}).merge(default: ENV['REDIRECT_BASE_URL']).each do |from, to| %>
+		<% require('json'); JSON.parse(ENV["REDIRECT_DOMAIN_MAP"] || {}).merge(default: ENV['REDIRECT_DEFAULT_DOMAIN']).each do |from, to| %>
 			<%= from %> <%= to %>;
 		<% end %>
 	}
