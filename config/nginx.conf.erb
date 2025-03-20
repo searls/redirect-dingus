@@ -43,7 +43,7 @@ http {
 		client_max_body_size <%= ENV["NGINX_CLIENT_MAX_BODY_SIZE"] || 1 %>M;
 
 		map $host $target_host {
-			<% JSON.parse(ENV["REDIRECT_DOMAIN_MAP"] || {}).merge(default: ENV['REDIRECT_BASE_URL']).each do |from, to| %>
+			<% require('json'); JSON.parse(ENV["REDIRECT_DOMAIN_MAP"] || {}).merge(default: ENV['REDIRECT_BASE_URL']).each do |from, to| %>
 				<%= from %> <%= to %>;
 			<% end %>
 		}
