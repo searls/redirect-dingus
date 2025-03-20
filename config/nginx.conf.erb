@@ -39,10 +39,10 @@ http {
 		<% end %>
 	}
 
-	map $server_port $port_part {
+	map $http_x_forwarded_port $port_part {
 		80 "";
 		443 "";
-		default ":$server_port";
+		default ":$http_x_forwarded_port";
 	}
 
 	client_body_timeout <%= ENV['NGINX_CLIENT_BODY_TIMEOUT'] || 5 %>;
@@ -55,7 +55,7 @@ http {
 		client_max_body_size <%= ENV["NGINX_CLIENT_MAX_BODY_SIZE"] || 1 %>M;
 
 		location / {
-      return 301 $scheme://$target_host$port_part$request_uri;
+			return 301 $http_x_forwarded_proto://$target_host$port_part$request_uri;
 		}
 	}
 }
